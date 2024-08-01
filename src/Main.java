@@ -39,6 +39,32 @@ public class Main
         }
     }
 
+    static void binaryWithoutloop( int[] numArray, int target, int start, int end )
+    {
+        int mid = ( start + end ) / 2;
+        if( start <= end )
+        {
+            if( numArray[mid] == target )
+            {
+                System.out.println( "found at " + mid );
+            }
+            else if( target > numArray[mid] )
+            {
+                start = mid + 1;
+                binaryWithoutloop( numArray, target, start, end );
+            }
+            else
+            {
+                end = mid - 1;
+                binaryWithoutloop( numArray, target, start, end );
+            }
+        }
+        else
+        {
+            System.out.println( "not found" );
+        }
+    }
+
     static int largeValue( int[] array )
     {
 
@@ -73,6 +99,10 @@ public class Main
         System.out.println( "Enter num" );
         int num2 = scanner1.nextInt();
         binary_search( num2, sortedArray );
+
+
+        //Binary search without loops
+        binaryWithoutloop( sortedArray,10,0, sortedArray.length-1 );
 
         //Find second largest value in a array
         int num1 = largeValue( numArray );
